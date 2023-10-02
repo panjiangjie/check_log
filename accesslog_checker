@@ -1,9 +1,7 @@
 #!/bin/bash
 
-#ファイルの初期化
 rm -f apache_output.txt
 
-# whoisコマンドがインストールされていない場合はインストールする
 if ! command -v whois &> /dev/null; then
   yum install -y whois
 fi
@@ -31,8 +29,7 @@ AWS=`printf '\033[32m%s\033[m\n' 'AWS!!'`
 LOCAL_IP='^192\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|^172\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}|^[0-9]{1,3}\.0\.0\.0'
 NOISIP='^[0-9]+\.[0]+0$sort'
 
-# ログの有無をチェック
-
+# ログ有無をチェック
 if [ -z "$access_log" ] ; then
     echo "access_log not found"
     echo "default path is \"/var/log/httpd/\""
